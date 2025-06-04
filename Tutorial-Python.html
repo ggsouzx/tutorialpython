@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial-Python</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#tutorial-do-python-release-3.13.3">Tutorial do Python, Release 3.13.3</a>
+<ul>
+<li><a href="#índice">ÍNDICE</a></li>
+<li><a href="#capítulo-um-despertando-seu-interesse">CAPÍTULO UM: DESPERTANDO SEU INTERESSE</a></li>
+<li><a href="#capítulo-dois-usando-o-interpretador-python">CAPÍTULO DOIS: USANDO O INTERPRETADOR PYTHON</a></li>
+<li><a href="#capítulo-três-uma-introdução-informal-ao-python">CAPÍTULO TRÊS: UMA INTRODUÇÃO INFORMAL AO PYTHON</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="tutorial-do-python-release-3.13.3">Tutorial do Python, Release 3.13.3</h1>
+<p><strong>Autor:</strong> Guilherme de Souza<br>
+<strong>Data:</strong> 27 de abril de 2025<br>
+<strong>Fundação de Software Python</strong><br>
+<strong>E-mail:</strong> <a href="mailto:guilhermedesouza.dev@gmail.com">guilhermedesouza.dev@gmail.com</a></p>
+<h2 id="índice">ÍNDICE</h2>
+<ol>
+<li><strong>Despertando Seu Interesse</strong></li>
+<li><strong>Usando o Interpretador Python</strong><br>
+2.1 Invocando o Interpretador<br>
+2.1.1 Passagem de Argumentos<br>
+2.2.1 Codificação do Código-Fonte</li>
+<li><strong>Uma Introdução Informal ao Python</strong><br>
+3.1.1 Números<br>
+3.1.2 Texto<br>
+3.1.3 Listas<br>
+3.2 Primeiros Passos em Programação</li>
+</ol>
+<h2 id="capítulo-um-despertando-seu-interesse">CAPÍTULO UM: DESPERTANDO SEU INTERESSE</h2>
+<p>Se você trabalha muito com computadores, eventualmente desejará automatizar algumas tarefas. Por exemplo, pode querer realizar uma busca e substituição em vários arquivos de texto, renomear e organizar arquivos de fotos de maneira complexa, ou criar um banco de dados personalizado, uma aplicação de interface gráfica (GUI) ou um jogo simples.</p>
+<p>Se você é um desenvolvedor de software profissional, pode precisar trabalhar com bibliotecas em C, C++ ou Java, mas o ciclo de escrita/compilação/teste/recompilação pode ser muito lento. Talvez você esteja desenvolvendo uma suíte de testes para uma biblioteca e ache a tarefa de escrever o código de teste tediosa, ou talvez tenha escrito um programa que poderia se beneficiar de uma linguagem de extensão, mas não deseja criar uma nova linguagem do zero. Python é a linguagem ideal para você.</p>
+<p>Você poderia escrever um script de shell Unix ou um arquivo em lote do Windows para algumas dessas tarefas, mas scripts de shell são mais adequados para mover arquivos e manipular dados de texto, não sendo ideais para aplicações GUI ou jogos. Você poderia escrever um programa em C, C++ ou Java, mas isso pode exigir muito tempo de desenvolvimento, mesmo para um rascunho inicial. Python é mais simples de usar, está disponível para Windows, macOS e sistemas operacionais Unix, e ajuda a realizar o trabalho mais rapidamente.</p>
+<p>Python é fácil de usar, mas é uma linguagem de programação robusta, oferecendo mais estrutura e suporte para programas grandes do que scripts de shell ou arquivos em lote. Comparado ao C, Python fornece mais verificação de erros e, sendo uma linguagem de alto nível, possui tipos de dados avançados, como arrays flexíveis e dicionários. Devido a seus tipos de dados mais gerais, Python é aplicável a um domínio de problemas muito maior do que Awk ou até mesmo Perl, mas muitas tarefas são tão fáceis em Python quanto nessas linguagens.</p>
+<p>Python permite dividir seu programa em módulos que podem ser reutilizados em outros programas Python. Ele vem com uma grande coleção de módulos padrão que você pode usar como base para seus programas ou como exemplos para começar a aprender a programar em Python. Alguns desses módulos oferecem funcionalidades como entrada/saída de arquivos, chamadas de sistema, sockets e até interfaces para ferramentas de interface gráfica, como Tk.</p>
+<p>Python é uma linguagem interpretada, o que economiza tempo considerável durante o desenvolvimento, pois não é necessário compilar e linkar. O interpretador pode ser usado interativamente, permitindo experimentar recursos da linguagem, escrever programas descartáveis ou testar funções durante o desenvolvimento <em>bottom-up</em> (de baixo para cima). Ele também é uma calculadora de mesa prática.</p>
+<p>Python permite escrever programas de forma compacta e legível. Programas escritos em Python são geralmente muito mais curtos do que seus equivalentes em C, C++ ou Java, por várias razões:</p>
+<ul>
+<li>Tipos de dados de alto nível permitem expressar operações complexas em uma única instrução;</li>
+<li>O agrupamento de instruções é feito por indentação, em vez de chaves de início e fim;</li>
+<li>Não é necessário declarar variáveis ou argumentos.</li>
+</ul>
+<p>Python é extensível: se você sabe programar em C, é fácil adicionar uma nova função ou módulo ao interpretador, seja para realizar operações críticas na máxima velocidade, seja para conectar programas Python a bibliotecas que podem estar disponíveis apenas em forma binária (como uma biblioteca gráfica específica de um fornecedor). Quando você estiver realmente envolvido, pode integrar o interpretador Python em uma aplicação escrita em C e usá-lo como uma linguagem de extensão ou comando para essa aplicação.</p>
+<p>A propósito, a linguagem leva o nome do programa da BBC <em>Monty Python’s Flying Circus</em> e não tem relação com répteis. Fazer referências a esquetes de Monty Python na documentação não é apenas permitido, mas incentivado!</p>
+<p>Agora que você está entusiasmado com o Python, vai querer examiná-lo em mais detalhes. Como a melhor maneira de aprender uma linguagem é usá-la, este tutorial convida você a experimentar o interpretador Python enquanto lê.</p>
+<p>No próximo capítulo, explicamos a mecânica de uso do interpretador. Essa informação é um tanto básica, mas essencial para testar os exemplos apresentados mais adiante.</p>
+<p>O restante do tutorial apresenta várias funcionalidades da linguagem e do sistema Python por meio de exemplos, começando com expressões simples, declarações e tipos de dados, passando por funções e módulos, e finalmente abordando conceitos avançados, como exceções e classes definidas pelo usuário.</p>
+<h2 id="capítulo-dois-usando-o-interpretador-python">CAPÍTULO DOIS: USANDO O INTERPRETADOR PYTHON</h2>
+<h3 id="invocando-o-interpretador">2.1 Invocando o Interpretador</h3>
+<p>O interpretador Python geralmente é instalado em <code>/usr/local/bin/python3.13</code> nas máquinas onde está disponível; adicionar <code>/usr/local/bin</code> ao caminho de busca do shell Unix permite iniciá-lo digitando o comando:</p>
+<pre class=" language-bash"><code class="prism  language-bash">python3.13
+
+</code></pre>
+<p>no shell. Como a escolha do diretório onde o interpretador está instalado é uma opção de instalação, outros locais são possíveis; verifique com seu guru local de Python ou administrador do sistema. (Por exemplo, <code>/usr/local/python</code> é uma alternativa popular.)</p>
+<p>Em máquinas Windows onde o Python foi instalado a partir da Microsoft Store, o comando <code>python3.13</code> estará disponível. Se você tiver o lançador <code>py.exe</code> instalado, pode usar o comando <code>py</code>. Consulte a documentação sobre variáveis de ambiente para outras formas de iniciar o Python.</p>
+<p>Digitar um caractere de fim de arquivo (Control-D no Unix, Control-Z no Windows) no prompt primário faz o interpretador sair com um status de saída zero. Se isso não funcionar, você pode sair do interpretador digitando o comando: <code>quit()</code>.</p>
+<p>Os recursos de edição de linha do interpretador incluem edição interativa, substituição de histórico e preenchimento de código em sistemas que suportam a biblioteca GNU Readline. Uma maneira rápida de verificar se a edição de linha está disponível é digitar Control-P no primeiro prompt do Python. Se ele emitir um bipe, a edição de linha está ativa; consulte o Apêndice sobre Edição de Entrada Interativa e Substituição de Histórico para uma introdução às teclas. Se nada acontecer, ou se <code>^P</code> for exibido, a edição de linha não está disponível; você só poderá usar a tecla de retrocesso para remover caracteres da linha atual.</p>
+<p>O interpretador opera de forma semelhante ao shell Unix: quando chamado com a entrada padrão conectada a um dispositivo tty, ele lê e executa comandos interativamente; quando chamado com um nome de arquivo como argumento ou com um arquivo como entrada padrão, ele lê e executa um script desse arquivo.</p>
+<p>Uma segunda forma de iniciar o interpretador é com <code>python -c comando [arg]...</code>, que executa as instruções no <em>comando</em>, análogo à opção <code>-c</code> do shell. Como as instruções Python frequentemente contêm espaços ou outros caracteres especiais para o shell, é recomendável colocar o <em>comando</em> entre aspas.</p>
+<p>Alguns módulos Python também são úteis como scripts. Eles podem ser invocados usando <code>python -m módulo [arg]...</code>, que executa o arquivo-fonte do módulo como se seu nome completo tivesse sido especificado na linha de comando.</p>
+<p>Quando um arquivo de script é usado, às vezes é útil executar o script e entrar no modo interativo depois. Isso pode ser feito passando <code>-i</code> antes do script.</p>
+<p>Todas as opções de linha de comando estão descritas na documentação sobre uso geral.</p>
+<p><strong>Nota:</strong> No Unix, o interpretador Python 3.x não é instalado por padrão com o executável chamado <code>python</code>, para evitar conflitos com um executável Python 2.x instalado simultaneamente.</p>
+<h3 id="passagem-de-argumentos">2.1.1 Passagem de Argumentos</h3>
+<p>Quando conhecidos pelo interpretador, o nome do script e os argumentos adicionais são transformados em uma lista de strings e atribuídos à variável <code>argv</code> no módulo <code>sys</code>. Você pode acessar essa lista executando <code>import sys</code>. O comprimento da lista é pelo menos um; quando nenhum script ou argumento é fornecido, <code>sys.argv[0]</code> é uma string vazia. Quando o nome do script é fornecido como <code>-</code> (significando entrada padrão), <code>sys.argv[0]</code> é definido como <code>-</code>. Quando <code>-c comando</code> é usado, <code>sys.argv[0]</code> é definido como <code>-c</code>. Quando <code>-m módulo</code> é usado, <code>sys.argv[0]</code> é definido como o nome completo do módulo localizado. As opções após <code>-c comando</code> ou <code>-m módulo</code> não são consumidas pelo processamento de opções do interpretador Python, mas deixadas em <code>sys.argv</code> para o comando ou módulo manipular.</p>
+<h3 id="modo-interativo">2.1.2 Modo Interativo</h3>
+<p>Quando os comandos são lidos de um dispositivo tty, o interpretador está no modo interativo. Nesse modo, ele solicita o próximo comando com o prompt primário, geralmente três sinais de maior (<code>&gt;&gt;&gt;</code>); para linhas de continuação, ele usa o prompt secundário, por padrão três pontos (<code>...</code>). O interpretador imprime uma mensagem de boas-vindas com seu número de versão e um aviso de copyright antes de exibir o primeiro prompt:</p>
+<pre class=" language-bash"><code class="prism  language-bash">$ python3.13
+Python 3.13 <span class="token punctuation">(</span>default, 4 de abril de 2023, 09:25:04<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GCC 10.2.0<span class="token punctuation">]</span> no Linux
+Digite <span class="token string">"help"</span>, <span class="token string">"copyright"</span>, <span class="token string">"credits"</span> ou <span class="token string">"license"</span> para mais informações.
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span>
+
+</code></pre>
+<p>Linhas de continuação são necessárias ao inserir uma construção de várias linhas. Como exemplo, veja esta instrução <code>if</code>:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> the_world_is_flat <span class="token operator">=</span> <span class="token boolean">True</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">if</span> the_world_is_flat<span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Cuidado para não cair!"</span><span class="token punctuation">)</span>
+Cuidado para não cair!
+
+</code></pre>
+<p>Para mais informações sobre o modo interativo, consulte a documentação sobre Modo Interativo.</p>
+<h3 id="codificação-do-código-fonte">2.2.1 Codificação do Código-Fonte</h3>
+<p>Por padrão, os arquivos-fonte Python são tratados como codificados em UTF-8. Nessa codificação, caracteres da maioria dos idiomas do mundo podem ser usados simultaneamente em literais de string, identificadores e comentários — embora a biblioteca padrão use apenas caracteres ASCII para identificadores, uma convenção que qualquer código portável deve seguir. Para exibir todos esses caracteres corretamente, seu editor deve reconhecer que o arquivo é UTF-8 e usar uma fonte que suporte todos os caracteres no arquivo.</p>
+<p>Para declarar uma codificação diferente do padrão, uma linha de comentário especial deve ser adicionada como a primeira linha do arquivo. A sintaxe é a seguinte:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># -*- coding: encoding -*-</span>
+
+</code></pre>
+<p>onde <em>encoding</em> é um dos codecs válidos suportados pelo Python.</p>
+<p>Por exemplo, para declarar que a codificação Windows-1252 deve ser usada, a primeira linha do arquivo-fonte deve ser:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># -*- coding: cp1252 -*-</span>
+
+</code></pre>
+<p>Uma exceção à regra da primeira linha é quando o código-fonte começa com uma linha <em>shebang</em> Unix. Nesse caso, a declaração de codificação deve ser adicionada como a segunda linha do arquivo. Por exemplo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment">#!/usr/bin/env python3</span>
+<span class="token comment"># -*- coding: cp1252 -*-</span>
+
+</code></pre>
+<h2 id="capítulo-três-uma-introdução-informal-ao-python">CAPÍTULO TRÊS: UMA INTRODUÇÃO INFORMAL AO PYTHON</h2>
+<p>Nos exemplos a seguir, entrada e saída são distinguidas pela presença ou ausência de prompts (<code>&gt;&gt;&gt;</code> e <code>...</code>): para repetir o exemplo, você deve digitar tudo após o prompt quando ele aparecer; linhas que não começam com um prompt são saídas do interpretador. Note que um prompt secundário em uma linha por si só em um exemplo significa que você deve digitar uma linha em branco; isso é usado para encerrar um comando de várias linhas.</p>
+<p>Muitos dos exemplos neste manual, mesmo aqueles inseridos no prompt interativo, incluem comentários. Comentários em Python começam com o caractere de cerquilha (<code>#</code>) e se estendem até o final da linha física. Um comentário pode aparecer no início de uma linha ou após um espaço em branco ou código, mas não dentro de um literal de string. Um caractere de cerquilha dentro de um literal de string é apenas um caractere de cerquilha. Como os comentários servem para esclarecer o código e não são interpretados pelo Python, eles podem ser omitidos ao digitar os exemplos.</p>
+<p>Alguns exemplos:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># este é o primeiro comentário</span>
+spam <span class="token operator">=</span> <span class="token number">1</span>  <span class="token comment"># e este é o segundo comentário</span>
+          <span class="token comment"># ... e agora um terceiro!</span>
+text <span class="token operator">=</span> <span class="token string">"# Isto não é um comentário porque está entre aspas."</span>
+
+</code></pre>
+<h3 id="usando-python-como-calculadora">3.1 Usando Python como Calculadora</h3>
+<p>Vamos experimentar alguns comandos simples do Python. Inicie o interpretador e aguarde o prompt primário, <code>&gt;&gt;&gt;</code>. (Não deve demorar muito.)</p>
+<h4 id="números">3.1.1 Números</h4>
+<p>O interpretador funciona como uma calculadora simples: você pode digitar uma expressão e ele exibirá o valor. A sintaxe das expressões é direta: os operadores <code>+</code>, <code>-</code>, <code>*</code> e <code>/</code> podem ser usados para realizar aritmética; parênteses (<code>()</code>) podem ser usados para agrupamento. Por exemplo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span>
+<span class="token number">4</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">50</span> <span class="token operator">-</span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">6</span>
+<span class="token number">20</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token number">50</span> <span class="token operator">-</span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">4</span>
+<span class="token number">5.0</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">8</span> <span class="token operator">/</span> <span class="token number">5</span>  <span class="token comment"># divisão sempre retorna um número de ponto flutuante</span>
+<span class="token number">1.6</span>
+
+</code></pre>
+<p>Os números inteiros (por exemplo, 2, 4, 20) são do tipo <code>int</code>, enquanto aqueles com uma parte fracionária (por exemplo, 5.0, 1.6) são do tipo <code>float</code>. Veremos mais sobre tipos numéricos mais adiante no tutorial.</p>
+<p>A divisão (<code>/</code>) sempre retorna um <code>float</code>. Para realizar uma divisão inteira e obter um resultado inteiro, você pode usar o operador <code>//</code>; para calcular o resto, pode usar <code>%</code>:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">17</span> <span class="token operator">/</span> <span class="token number">3</span>  <span class="token comment"># divisão clássica retorna um float</span>
+<span class="token number">5.666666666666667</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">17</span> <span class="token operator">//</span> <span class="token number">3</span>  <span class="token comment"># divisão inteira descarta a parte fracionária</span>
+<span class="token number">5</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">17</span> <span class="token operator">%</span> <span class="token number">3</span>  <span class="token comment"># o operador % retorna o resto da divisão</span>
+<span class="token number">2</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">2</span>  <span class="token comment"># quociente inteiro * divisor + resto</span>
+<span class="token number">17</span>
+
+</code></pre>
+<p>Com Python, é possível usar o operador <code>**</code> para calcular potências:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">5</span> <span class="token operator">**</span> <span class="token number">2</span>  <span class="token comment"># 5 ao quadrado</span>
+<span class="token number">25</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">2</span> <span class="token operator">**</span> <span class="token number">7</span>  <span class="token comment"># 2 elevado à sétima potência</span>
+<span class="token number">128</span>
+
+</code></pre>
+<p>O sinal de igual (<code>=</code>) é usado para atribuir um valor a uma variável. Após a atribuição, nenhum resultado é exibido antes do próximo prompt interativo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> width <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> height <span class="token operator">=</span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">9</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> width <span class="token operator">*</span> height
+<span class="token number">900</span>
+
+</code></pre>
+<p>Se uma variável não estiver “definida” (atribuída um valor), tentar usá-la resultará em um erro:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> n  <span class="token comment"># tentar acessar uma variável não definida</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin&gt;"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+NameError<span class="token punctuation">:</span> name <span class="token string">'n'</span> <span class="token keyword">is</span> <span class="token operator">not</span> defined
+
+</code></pre>
+<p>Há suporte completo para ponto flutuante; operadores com operandos de tipos mistos convertem o operando inteiro para ponto flutuante:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token number">3.75</span> <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token number">14.0</span>
+
+</code></pre>
+<p>No modo interativo, a última expressão impressa é atribuída à variável <code>_</code>. Isso facilita a continuação de cálculos quando se usa o Python como uma calculadora de mesa, por exemplo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> tax <span class="token operator">=</span> <span class="token number">12.5</span> <span class="token operator">/</span> <span class="token number">100</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> price <span class="token operator">=</span> <span class="token number">100.50</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> price <span class="token operator">*</span> tax
+<span class="token number">12.5625</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> price <span class="token operator">+</span> _
+<span class="token number">113.0625</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">round</span><span class="token punctuation">(</span>_<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token number">113.06</span>
+
+</code></pre>
+<p>Essa variável deve ser tratada como somente leitura pelo usuário. Não atribua explicitamente um valor a ela — isso criaria uma variável local independente com o mesmo nome, mascarando o comportamento mágico da variável embutida.</p>
+<p>Além de <code>int</code> e <code>float</code>, o Python suporta outros tipos de números, como <code>Decimal</code> e <code>Fraction</code>. O Python também tem suporte embutido para números complexos, usando o sufixo <code>j</code> ou <code>J</code> para indicar a parte imaginária (por exemplo, <code>3+5j</code>).</p>
+<p><strong>Nota:</strong> Como <code>**</code> tem precedência maior que <code>-</code>, <code>-3**2</code> será interpretado como <code>-(3**2)</code> e resultará em <code>-9</code>. Para evitar isso e obter <code>9</code>, use <code>(-3)**2</code>.</p>
+<h4 id="texto">3.1.2 Texto</h4>
+<p>O Python pode manipular texto (representado pelo tipo <code>str</code>, as chamadas “strings”) assim como números. Isso inclui caracteres como <code>"!"</code>, palavras como <code>"rabbit"</code>, nomes como <code>"Paris"</code>, frases como <code>"Got your back."</code>, etc. <code>"Yay! :)"</code>. Elas podem ser delimitadas por aspas simples (<code>'...'</code>) ou aspas duplas (<code>"..."</code>), com o mesmo resultado:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'spam eggs'</span>  <span class="token comment"># aspas simples</span>
+<span class="token string">'spam eggs'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">"Paris rabbit got your back :)! Yay!"</span>  <span class="token comment"># aspas duplas</span>
+<span class="token string">'Paris rabbit got your back :)! Yay!'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'1975'</span>  <span class="token comment"># dígitos e numerais entre aspas também são strings</span>
+<span class="token string">'1975'</span>
+
+</code></pre>
+<p>Para incluir uma aspa em uma string, é necessário “escapar” ela, precedendo-a com <code>\</code>. Alternativamente, pode-se usar o outro tipo de aspas:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'doesn\'t'</span>  <span class="token comment"># use \' para escapar a aspa simples...</span>
+<span class="token string">"doesn't"</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">"doesn't"</span>  <span class="token comment"># ...ou use aspas duplas</span>
+<span class="token string">"doesn't"</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'"Yes," they said.'</span>
+<span class="token string">'"Yes," they said.'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">"\"Yes,\" they said."</span>
+<span class="token string">'"Yes," they said.'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'"Isn\'t," they said.'</span>
+<span class="token string">'"Isn\'t," they said.'</span>
+
+</code></pre>
+<p>No shell do Python, a definição de uma string e sua saída podem parecer diferentes. A função <code>print()</code> produz uma saída mais legível, omitindo as aspas que delimitam a string e imprimindo caracteres especiais e escapados:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> s <span class="token operator">=</span> <span class="token string">'Primeira linha.\nSegunda linha.'</span>  <span class="token comment"># \n significa nova linha</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> s  <span class="token comment"># sem print(), caracteres especiais são incluídos na string</span>
+<span class="token string">'Primeira linha.\nSegunda linha.'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>  <span class="token comment"># com print(), caracteres especiais são interpretados, então \n produz uma nova linha</span>
+Primeira linha<span class="token punctuation">.</span>
+Segunda linha<span class="token punctuation">.</span>
+
+</code></pre>
+<p>Se você não quiser que caracteres precedidos por <code>\</code> sejam interpretados como caracteres especiais, pode usar strings brutas adicionando um <code>r</code> antes da primeira aspa:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'C:\some\name'</span><span class="token punctuation">)</span>  <span class="token comment"># aqui \n significa nova linha!</span>
+C<span class="token punctuation">:</span>\some
+ame
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token string">'C:\some\name'</span><span class="token punctuation">)</span>  <span class="token comment"># note o r antes da aspa</span>
+C<span class="token punctuation">:</span>\some\name
+
+</code></pre>
+<p>Strings literais podem se estender por várias linhas. Uma maneira é usar aspas triplas: <code>"""..."""</code> ou <code>'''...'''</code>. O fim de linha é incluído automaticamente na string, mas é possível evitar isso adicionando uma <code>\</code> no final da linha. Por exemplo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token triple-quoted-string string">"""\
+... Uso: algo
+...         -h                        Exibe esta mensagem de ajuda
+...         -f &lt;arquivo&gt;              Especifica um arquivo
+... """</span><span class="token punctuation">)</span>
+Uso<span class="token punctuation">:</span> algo
+        <span class="token operator">-</span>h                        Exibe esta mensagem de ajuda
+        <span class="token operator">-</span>f <span class="token operator">&lt;</span>arquivo<span class="token operator">&gt;</span>              Especifica um arquivo
+
+</code></pre>
+<p>Strings podem ser concatenadas (juntadas) com o operador <code>+</code> e repetidas com <code>*</code>:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment"># 3 vezes 'un', seguido de 'ium'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token string">'un'</span> <span class="token operator">+</span> <span class="token string">'ium'</span>
+<span class="token string">'unununium'</span>
+
+</code></pre>
+<p>Duas ou mais strings literais (ou seja, aquelas entre aspas) colocadas lado a lado são automaticamente concatenadas:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'Py'</span> <span class="token string">'thon'</span>
+<span class="token string">'Python'</span>
+
+</code></pre>
+<p>Esse recurso é particularmente útil quando você deseja quebrar strings longas:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> text <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'Coloque várias strings dentro de parênteses '</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         <span class="token string">'para que sejam concatenadas.'</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> text
+<span class="token string">'Coloque várias strings dentro de parênteses para que sejam concatenadas.'</span>
+
+</code></pre>
+<p>Isso só funciona com duas strings literais, não com variáveis ou expressões:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> prefix <span class="token operator">=</span> <span class="token string">'Py'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> prefix <span class="token string">'thon'</span>  <span class="token comment"># não pode concatenar uma variável e uma string literal</span>
+  File <span class="token string">"&lt;stdin&gt;"</span><span class="token punctuation">,</span> line <span class="token number">1</span>
+    prefix <span class="token string">'thon'</span>
+                <span class="token operator">^</span>
+SyntaxError<span class="token punctuation">:</span> invalid syntax
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token string">'un'</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">'ium'</span>
+  File <span class="token string">"&lt;stdin&gt;"</span><span class="token punctuation">,</span> line <span class="token number">1</span>
+    <span class="token punctuation">(</span><span class="token string">'un'</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">'ium'</span>
+                    <span class="token operator">^</span>
+SyntaxError<span class="token punctuation">:</span> invalid syntax
+
+</code></pre>
+<p>Se você deseja concatenar variáveis ou uma variável com uma literal, use <code>+</code>:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> prefix <span class="token operator">=</span> <span class="token string">'Py'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> prefix <span class="token operator">+</span> <span class="token string">'thon'</span>
+<span class="token string">'Python'</span>
+
+</code></pre>
+<p>Strings podem ser indexadas (acessadas por subscrito), com o primeiro caractere tendo índice 0. Não há tipo separado para caracteres; um caractere é simplesmente uma string de tamanho 1:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word <span class="token operator">=</span> <span class="token string">'Python'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>  <span class="token comment"># caractere na posição 0</span>
+<span class="token string">'P'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span>  <span class="token comment"># caractere na posição 5</span>
+<span class="token string">'n'</span>
+
+</code></pre>
+<p>Índices também podem ser negativos, começando a contagem a partir do final da string:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># último caractere</span>
+<span class="token string">'n'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>  <span class="token comment"># penúltimo caractere</span>
+<span class="token string">'o'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">]</span>  <span class="token comment"># primeiro caractere</span>
+<span class="token string">'P'</span>
+
+</code></pre>
+<p>Além da indexação, também é suportado o fatiamento (<em>slicing</em>). Enquanto a indexação é usada para obter caracteres individuais, o fatiamento permite obter substrings:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>  <span class="token comment"># caracteres da posição 0 (incluída) até 2 (excluída)</span>
+<span class="token string">'Py'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span>  <span class="token comment"># caracteres da posição 2 (incluída) até 5 (excluída)</span>
+<span class="token string">'tho'</span>
+
+</code></pre>
+<p>Os índices de fatiamento têm valores padrão úteis; um primeiro índice omitido assume o valor zero, um segundo índice omitido assume o tamanho da string sendo fatiada:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>   <span class="token comment"># caracteres do início até a posição 2 (excluída)</span>
+<span class="token string">'Py'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token punctuation">]</span>   <span class="token comment"># caracteres da posição 4 (incluída) até o final</span>
+<span class="token string">'on'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>  <span class="token comment"># caracteres do penúltimo (incluído) até o final</span>
+<span class="token string">'on'</span>
+
+</code></pre>
+<p>Note que o início está sempre incluído, e o fim está sempre excluído. Isso garante que <code>s[:i] + s[i:]</code> seja sempre igual a <code>s</code>:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> word<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token string">'Python'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">+</span> word<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token string">'Python'</span>
+
+</code></pre>
+<p>Uma maneira de lembrar como os fatiamentos funcionam é pensar nos índices como apontando <em>entre</em> os caracteres, com a borda esquerda do primeiro caractere numerada como 0. Para uma string de comprimento <em>n</em>, há <em>n+1</em> pontos, numerados de 0 a <em>n</em>. Por exemplo:</p>
+<pre><code> +---+---+---+---+---+---+
+ | P | y | t | h | o | n |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1
+
+</code></pre>
+<p>A primeira linha de números dá as posições dos índices 0…6 na string; a segunda linha dá os índices negativos correspondentes. O fatiamento de <em>i</em> a <em>j</em> consiste em todos os caracteres entre as bordas rotuladas como <em>i</em> e <em>j</em>, respectivamente.</p>
+<p>Para índices não negativos, o comprimento de um fatiamento é a diferença entre os índices, se ambos estiverem dentro dos limites. Por exemplo, <code>word[1:3]</code> tem comprimento 2.</p>
+<p>Tentar usar um índice fora dos limites resultará em um erro:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">42</span><span class="token punctuation">]</span>  <span class="token comment"># a string tem apenas 6 caracteres</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin&gt;"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+IndexError<span class="token punctuation">:</span> string index out of <span class="token builtin">range</span>
+
+</code></pre>
+<p>No entanto, índices fora dos limites em fatiamentos são tratados de maneira elegante: um índice maior que o comprimento da string é substituído pelo comprimento da string; um índice inicial maior que o índice final retorna uma string vazia:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">]</span>
+<span class="token string">'on'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token string">''</span>
+
+</code></pre>
+<p>Strings do Python são imutáveis; elas não podem ser alteradas no lugar. Portanto, atribuir a uma posição indexada de uma string resulta em um erro:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'J'</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin&gt;"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+TypeError<span class="token punctuation">:</span> <span class="token string">'str'</span> <span class="token builtin">object</span> does <span class="token operator">not</span> support item assignment
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'py'</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin&gt;"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+TypeError<span class="token punctuation">:</span> <span class="token string">'str'</span> <span class="token builtin">object</span> does <span class="token operator">not</span> support item assignment
+
+</code></pre>
+<p>Se você precisa de uma string diferente, deve criar uma nova:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'J'</span> <span class="token operator">+</span> word<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token string">'Jython'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'py'</span>
+<span class="token string">'Pypy'</span>
+
+</code></pre>
+<p>A função embutida <code>len()</code> retorna o comprimento de uma string:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> s <span class="token operator">=</span> <span class="token string">'supercalifragilisticexpialidocious'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token number">34</span>
+
+</code></pre>
+<p>Consulte também:</p>
+<ul>
+<li><strong>Objetos semelhantes a sequências</strong>: Strings são exemplos de tipos de sequência, e suportam os métodos comuns que esses tipos oferecem. Veremos mais sobre isso na seção sobre sequências.</li>
+<li><strong>Métodos de string</strong>: Strings suportam um grande número de métodos para transformações e buscas básicas.</li>
+<li><strong>Strings formatadas</strong>: Informações sobre formatação de strings com <code>str.format()</code> estão descritas na documentação correspondente.</li>
+<li><strong>Literais de string formatada</strong>: Strings formatadas permitem incluir o valor de expressões Python dentro de uma string prefixando-a com <code>f</code> ou <code>F</code> e escrevendo expressões como <code>{expressão}</code>.</li>
+</ul>
+<p>Um exemplo que usa vários desses recursos de strings:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> f<span class="token string">'Nome: {word!r}, Comprimento: {len(word)}'</span>
+<span class="token string">"Nome: 'Python', Comprimento: 6"</span>
+
+</code></pre>
+<h4 id="listas">3.1.3 Listas</h4>
+<p>O Python possui vários tipos compostos, usados para agrupar valores. O mais versátil é a <em>lista</em>, que pode ser escrita como uma sequência de valores (itens) separados por vírgulas, entre colchetes. Os itens de uma lista não precisam ser do mesmo tipo.</p>
+<p>Criar uma lista é tão simples quanto colocar valores separados por vírgulas entre colchetes <code>[]</code>:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>Assim como strings (e todos os outros tipos de sequência embutidos), listas podem ser indexadas e fatiadas:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>  <span class="token comment"># indexação retorna o item</span>
+<span class="token number">1</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token number">25</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token punctuation">]</span>  <span class="token comment"># fatiamento retorna uma nova lista</span>
+<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>Todos os fatiamentos retornam uma nova lista contendo os elementos solicitados. Isso significa que o seguinte fatiamento retorna uma cópia rasa (<em>shallow copy</em>) da lista:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>Listas também suportam operações como concatenação:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> squares <span class="token operator">+</span> <span class="token punctuation">[</span><span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">81</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">81</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>Diferentemente das strings, que são imutáveis, listas são um tipo mutável, ou seja, é possível alterar seu conteúdo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> cubes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">,</span> <span class="token number">125</span><span class="token punctuation">]</span>  <span class="token comment"># algo está errado aqui</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token number">4</span> <span class="token operator">**</span> <span class="token number">3</span>  <span class="token comment"># o cubo de 4 é 64, não 65!</span>
+<span class="token number">64</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> cubes<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">64</span>  <span class="token comment"># substitui o valor errado</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> cubes
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">125</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>Você também pode adicionar novos itens ao final de uma lista usando o método <code>append()</code> (veremos mais sobre métodos de lista mais adiante):</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> cubes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">216</span><span class="token punctuation">)</span>  <span class="token comment"># adiciona o cubo de 6</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> cubes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">7</span> <span class="token operator">**</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment"># e o cubo de 7</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> cubes
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">125</span><span class="token punctuation">,</span> <span class="token number">216</span><span class="token punctuation">,</span> <span class="token number">343</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>A atribuição a fatiamentos também é possível, e isso pode até mudar o tamanho da lista ou limpá-la completamente:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters
+<span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment"># substitui alguns valores</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters
+<span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment"># agora remove eles</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters
+<span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment"># limpa a lista substituindo todos os elementos por uma lista vazia</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters
+<span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>A função embutida <code>len()</code> também se aplica a listas:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> letters <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>letters<span class="token punctuation">)</span>
+<span class="token number">4</span>
+
+</code></pre>
+<p>É possível aninhar listas (criar listas contendo outras listas), por exemplo:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> n <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> n<span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token string">'b'</span>
+
+</code></pre>
+<h4 id="primeiros-passos-em-programação">3.2 Primeiros Passos em Programação</h4>
+<p>Claro, podemos usar o Python para tarefas mais complicadas do que somar dois e dois. Por exemplo, podemos escrever uma subseqüência inicial da série de Fibonacci assim:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment"># Série de Fibonacci:</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment"># a soma de dois elementos define o próximo</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">while</span> a <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a <span class="token operator">+</span> b
+<span class="token number">0</span>
+<span class="token number">1</span>
+<span class="token number">1</span>
+<span class="token number">2</span>
+<span class="token number">3</span>
+<span class="token number">5</span>
+<span class="token number">8</span>
+
+</code></pre>
+<p>Este exemplo introduz várias características novas:</p>
+<ul>
+<li>
+<p>A primeira linha contém uma atribuição múltipla: as variáveis <code>a</code> e <code>b</code> recebem simultaneamente os valores 0 e 1. Na última linha, isso é usado novamente, demonstrando que as expressões do lado direito são todas avaliadas primeiro antes que qualquer atribuição ocorra. As expressões do lado direito são avaliadas da esquerda para a direita.</p>
+</li>
+<li>
+<p>O laço <code>while</code> executa enquanto a condição (aqui: <code>a &lt; 10</code>) permanecer verdadeira. Em Python, como em C, qualquer valor inteiro diferente de zero é verdadeiro; zero é falso. A condição também pode ser uma string ou um valor de lista, na verdade qualquer sequência; qualquer coisa com comprimento diferente de zero é verdadeira, sequências vazias são falsas. O teste usado no exemplo é uma comparação simples. Os operadores de comparação padrão são escritos como em C: <code>&lt;</code> (menor que), <code>&gt;</code> (maior que), <code>==</code> (igual a), <code>&lt;=</code> (menor ou igual a), <code>&gt;=</code> (maior ou igual a) e <code>!=</code> (diferente de).</p>
+</li>
+<li>
+<p>O <em>corpo</em> do laço é indentado: a indentação é a maneira do Python de agrupar instruções. No prompt interativo, você deve digitar uma tabulação ou espaço(s) para cada linha indentada. Na prática, você escreverá programas Python em um editor de texto; todos os editores decentes têm suporte para indentação automática. Quando uma instrução composta é inserida interativamente, ela deve ser seguida por uma linha em branco para indicar sua conclusão (já que o analisador não pode adivinhar quando você terminou de digitar a última linha). Note que cada linha dentro de um bloco básico deve ter o mesmo nível de indentação.</p>
+</li>
+<li>
+<p>A função <code>print()</code> escreve o valor dos argumentos que recebe. Ela difere de simplesmente escrever a expressão que você deseja exibir (como fizemos anteriormente nos exemplos de calculadora) na maneira como lida com múltiplos argumentos, valores de ponto flutuante e strings. Strings são impressas sem aspas, e um espaço é inserido entre os itens, para que você possa formatar as coisas de maneira agradável:</p>
+</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> i <span class="token operator">=</span> <span class="token number">256</span> <span class="token operator">*</span> <span class="token number">256</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'O valor de i é'</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+O valor de i é <span class="token number">65536</span>
+
+</code></pre>
+<p>O argumento nomeado <code>end</code> pode be usado para evitar a quebra de linha após a saída, ou para terminar a saída com uma string diferente:</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">while</span> a <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">', '</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a <span class="token operator">+</span> b
+<span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">144</span><span class="token punctuation">,</span> <span class="token number">233</span><span class="token punctuation">,</span> <span class="token number">377</span><span class="token punctuation">,</span> <span class="token number">610</span><span class="token punctuation">,</span> <span class="token number">987</span><span class="token punctuation">,</span>
+
+</code></pre>
+<p><strong>Nota:</strong> Como <code>**</code> tem precedência maior que <code>-</code>, <code>-3**2</code> será interpretado como <code>-(3**2)</code> e resultará em <code>-9</code>. Para evitar isso e obter <code>9</code>, você pode usar <code>(-3)**2</code>.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
